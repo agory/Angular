@@ -38,6 +38,7 @@ todoList.controller('todoCtrl', ['$scope',
             todos.push({
                 // on ajoute le todo au tableau des todos
                 title: newTodo,
+                date: new Date(),
                 completed: false
             });
             // Réinitialisation de la variable newTodo
@@ -52,7 +53,7 @@ todoList.controller('todoCtrl', ['$scope',
         // Cocher / Décocher tous les todos
         $scope.markAll = function (completed) {
             todos.forEach(function (todo) {
-                todo.completed = !completed;
+                todo.completed = completed;
             });
         };
 
