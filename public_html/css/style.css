@@ -38,20 +38,25 @@
 }
 .todo-head > .check,
 .todo-head > .title,
-.todo-head > .del {
-    display: inline-block;
+.todo-head > .del,
+.todo-head > .title-new {
+    top:0px;
+    position: absolute;
     vertical-align: bottom;
     height: 30px;
     margin: 0px;
 }
 .todo-head > .check{
-    width: 10%;
+    left: 0px;
+    right: 90%;
 }
 .todo-head > .title{
-    width: 71%;
+    right: 15%;
+    left: 10%;
 }
 .todo-head > .title-new{
-    width: 100%;
+    right: 15%;
+    left: 10%;
 }
 .todo-head > .title > input{
     font-weight: bold;
@@ -64,7 +69,8 @@
     text-align: center;
 }
 .todo-head > .del{
-    width: 14.6%;
+    right: 0px;
+    left: 75%px;
     background-color: red;
     text-align: center;
     padding: 5px;
