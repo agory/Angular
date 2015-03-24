@@ -30,19 +30,22 @@ todoList.controller('todoCtrl', ['$scope',
         $scope.addTodo = function () {
             // .trim() permet de supprimer les espaces inutiles
             // en début et fin d'une chaîne de caractères
-            var newTodo = $scope.newTodo.trim();
-            if (!newTodo.length) {
+            var title = $scope.title.trim();
+            var content = $scope.content.trim();
+            if (!title.length && !content.length) {
                 // éviter les todos vides
                 return;
             }
             todos.push({
                 // on ajoute le todo au tableau des todos
-                title: newTodo,
+                title: title,
+                content: content,
                 date: new Date(),
                 completed: false
             });
             // Réinitialisation de la variable newTodo
-            $scope.newTodo = '';
+            $scope.title = '';
+            $scope.content = '';
         };
 
         // Enlever un todo

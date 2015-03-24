@@ -41,21 +41,49 @@
             </header>
             <section ng-controller="todoCtrl">
                 <form id="todo-form" ng-submit="addTodo()">
-                    <input id="new-todo" placeholder="Que devez-vous faire ?" ng-model="newTodo" />
+                    <div class='todo col-md-3'>
+                        <div class="todo-head">
+                            <div class="title-new">
+                                <input type="text" ng-model="title" placeholder="Title">
+                            </div>
+                        </div>  
+                        <div class="todo-content">
+                            <textarea placeholder="Contenu de la todo" ng-model="content">                                    
+                            </textarea>
+                        </div>
+                        <div class="todo-foot">
+                            <input type="submit" value='ajouter'/>
+                        </div>
+                    </div>
                 </form>
                 <article ng-show="todos.length">
-                    <ul id="todo-list">
-                        <li ng-repeat="todo in todos" ng-class="{completed: todo.completed}">
-                            <div class="view">
-                                <input class="mark" type="checkbox" ng-model="todo.completed" />
-                                <span>{{todo.date|date:"dd/MM/yyyy H:mm"}} - {{todo.title}}</span>
-                                <span class="close" ng-click="removeTodo(todo)">x</span>
+                    <div class="row">
+                        <div class="col-md-3 todo" ng-repeat="todo in todos" ng-class="{completed: todo.completed}">
+                            <div class="todo-head">
+                                <div class="check">
+                                    <input type="checkbox" ng-model="todo.completed" />
+                                </div>
+                                <div class="title">
+                                    <input type="text" ng-model="todo.title" placeholder="Title">
+                                </div>
+                                <div class="del">
+                                    <span class="glyphicon glyphicon-trash"ng-click="removeTodo(todo)"></span>
+                                </div>
+                            </div>  
+                            <div class="todo-content">
+                                <textarea placeholder="Contenu de la todo" ng-model="todo.content">                                    
+                                </textarea>
                             </div>
-                        </li>
-                    </ul>
-                    <input id="mark-all" class="hidden" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)" />
-                    <label class="btn btn-info" for="mark-all">Tout cocher</label>
-                    <button class="btn btn-danger" ng-click="clearCompletedTodos()">Supprimer les tâches cochées</button>
+                            <div class="todo-foot">
+                                <i>{{todo.date|date:"dd/MM/yyyy H:mm"}}</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input id="mark-all" class="hidden" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)" />
+                        <label class="btn btn-info" for="mark-all">Tout cocher</label>
+                        <button class="btn btn-danger" ng-click="clearCompletedTodos()">Supprimer les tâches cochées</button>
+                    </div>
                 </article>
             </section>
         </div>
